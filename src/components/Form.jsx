@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { addHeroPhoto } from "../services/API";
+import { addHeroPhoto, updateHeroById } from "../services/API";
 import { Button, TextField } from "@mui/material";
 import styled from "styled-components";
 
@@ -16,7 +16,7 @@ const StyledForm = styled.form`
   margin-bottom: 40px;
 `;
 
-const initialValues = {
+const empti = {
   nikname: "",
   name: "",
   origin: "",
@@ -27,6 +27,22 @@ const initialValues = {
 
 export const Form = ({ hero, postFnc }) => {
   const [preview, setPreview] = useState(null);
+
+  const initValue = () => {
+    if (hero) {
+      const { nikname, name, origin, superPowers, catchPhrase } = hero;
+      const initial = {
+        nikname,
+        name,
+        origin,
+        superPowers,
+        catchPhrase,
+        image: "",
+      };
+      return initial;
+    }
+    return empti;
+  };
 
   const onSubmitFnc = async (e) => {
     const { nikname, name, origin, superPowers, catchPhrase, image } = e;
@@ -46,7 +62,7 @@ export const Form = ({ hero, postFnc }) => {
     };
 
     if (hero) {
-      await postFnc(body, hero._id);
+      await updateHeroById(body, hero._id);
       formik.resetForm();
       return;
     }
@@ -57,7 +73,7 @@ export const Form = ({ hero, postFnc }) => {
   };
 
   const formik = useFormik({
-    initialValues,
+    initialValues: initValue(),
     onSubmit: onSubmitFnc,
     validationSchema: Yup.object({
       nikname: Yup.string(),

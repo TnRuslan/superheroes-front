@@ -39,7 +39,7 @@ export const Home = () => {
 
   useEffect(() => {
     getAllHero(page - 1).then((data) => {
-      setPageQuantity(Math.round(data.totalCount / 5));
+      setPageQuantity(Math.ceil(data.totalCount / 5));
       setHeroes(data.result);
     });
   }, [page]);
@@ -106,7 +106,7 @@ export const Home = () => {
       ) : (
         <Typography variant="h4">Then are no heroes</Typography>
       )}
-      {page > 1 && (
+      {page >= 1 && (
         <Stack>
           <Pagination
             count={pageQuantity}

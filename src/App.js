@@ -1,7 +1,6 @@
 import { Home } from "./pages/Home";
 import { CreateHeroPage } from "./pages/CreateHeroPage";
 import { HeroDetails } from "./pages/HeroDetails";
-import { UpdateHeroPage } from "./pages/UpdateHeroPage";
 import { Routes, Route, NavLink } from "react-router-dom";
 import { Form } from "./components/Form";
 import styled from "styled-components";
@@ -43,7 +42,6 @@ function App() {
         <Route path="/hero/:id" element={<HeroDetails />}>
           <Route path="edit" element={<Form />} />
         </Route>
-        <Route path="/update/:id" element={<UpdateHeroPage />} />
       </Routes>
     </>
   );
