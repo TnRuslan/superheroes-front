@@ -34,8 +34,6 @@ export const Home = () => {
   const [pageQuantity, setPageQuantity] = useState(0);
   const location = useLocation();
 
-  console.log(heroes);
-
   const handlePagination = (event, value) => {
     setPage(value);
   };
