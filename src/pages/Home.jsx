@@ -55,7 +55,7 @@ export const Home = () => {
       }}
     >
       <Typography variant="h1">Superheroes</Typography>
-      {heroes.length ? (
+      {heroes && heroes.length ? (
         <Grid container spacing={2} sx={{}}>
           {heroes.map((hero) => {
             return (
