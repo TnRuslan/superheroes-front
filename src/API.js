@@ -1,11 +1,13 @@
 import { Notify } from "notiflix";
 import axios from "axios";
 
+const baseUrl = "https://superheroes-api-evnc.onrender.com";
+
+// http://localhost:8080/heroes
+
 export const getAllHero = async (page) => {
   try {
-    const { data } = await axios.get(
-      `http://localhost:8080/heroes?page=${page}`
-    );
+    const { data } = await axios.get(`${baseUrl}?page=${page}`);
     return data;
   } catch (error) {
     Notify.failure(error.message);

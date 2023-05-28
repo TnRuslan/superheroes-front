@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { deleteHero, getHeroById, updateHeroById } from "../API";
+import { getHeroById, updateHeroById } from "../API";
 import { Link } from "react-router-dom";
 import { Form } from "../components/Form";
 import { Box, Button, Container, Typography } from "@mui/material";
