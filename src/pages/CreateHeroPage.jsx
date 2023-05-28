@@ -1,5 +1,5 @@
 import { Container, Typography } from "@mui/material";
-import { createHeroInfo } from "../API";
+import { createHeroInfo } from "../services/API";
 
 import { Form } from "../components/Form";
 

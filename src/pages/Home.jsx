@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { getAllHero } from "../API";
+import { getAllHero } from "../services/API";
 import {
   Box,
   Container,

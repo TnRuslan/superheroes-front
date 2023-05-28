@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { addHeroPhoto } from "../API";
+import { addHeroPhoto } from "../services/API";
 import { Button, TextField } from "@mui/material";
 import styled from "styled-components";
 

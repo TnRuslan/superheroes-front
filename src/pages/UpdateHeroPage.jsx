@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useParams } from "react-router-dom";
-import { getHeroById, addHeroPhoto, createHeroInfo } from "../API";
+import { getHeroById, addHeroPhoto, createHeroInfo } from "../services/API";
 
 export const UpdateHeroPage = () => {
   const [hero, setHero] = useState(null);
