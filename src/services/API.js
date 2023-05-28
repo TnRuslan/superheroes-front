@@ -1,9 +1,7 @@
 import { Notify } from "notiflix";
 import axios from "axios";
 
-const baseUrl = "https://superheroes-api-evnc.onrender.com";
-
-// http://localhost:8080/heroes
+const baseUrl = "https://superheroes-api-evnc.onrender.com/heroes";
 
 export const getAllHero = async (page) => {
   try {
@@ -16,7 +14,7 @@ export const getAllHero = async (page) => {
 
 export const getHeroById = async (id) => {
   try {
-    const { data } = await axios.get(`http://localhost:8080/heroes/${id}`);
+    const { data } = await axios.get(`${baseUrl}/${id}`);
     return data.result;
   } catch (err) {
     Notify.failure(err.message);
@@ -25,13 +23,9 @@ export const getHeroById = async (id) => {
 
 export const addHeroPhoto = async (file) => {
   try {
-    const { data } = await axios.post(
-      "http://localhost:8080/heroes/photo",
-      file,
-      {
-        headers: { "Content-Type": "multipart/form-data" },
-      }
-    );
+    const { data } = await axios.post(`${baseUrl}/photo`, file, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
     return data.result;
   } catch (error) {
     Notify.failure(error.message);
@@ -40,7 +34,7 @@ export const addHeroPhoto = async (file) => {
 
 export const createHeroInfo = async (body) => {
   try {
-    const { data } = await axios.post("http://localhost:8080/heroes", body);
+    const { data } = await axios.post(baseUrl, body);
     Notify.success("Hero was created");
     return data;
   } catch (error) {
@@ -50,10 +44,7 @@ export const createHeroInfo = async (body) => {
 
 export const updateHeroById = async (body, id) => {
   try {
-    const { data } = await axios.patch(
-      `http://localhost:8080/heroes/${id}`,
-      body
-    );
+    const { data } = await axios.patch(`${baseUrl}/${id}`, body);
     Notify.success("Hero was updated");
     return data;
   } catch (error) {
@@ -63,7 +54,7 @@ export const updateHeroById = async (body, id) => {
 
 export const deleteHero = async (id) => {
   try {
-    await axios.delete(`http://localhost:8080/heroes/${id}`);
+    await axios.delete(`${baseUrl}/${id}`);
     Notify.success("Hero was deleted");
   } catch (err) {
     Notify.failure(err.message);
