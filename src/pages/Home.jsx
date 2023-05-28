@@ -12,6 +12,7 @@ import {
   Button,
 } from "@mui/material";
 import styled from "styled-components";
+import UnknownHero from "../images/unknown.jpg";
 
 const StyledLink = styled(Link)`
   display: block;
@@ -32,6 +33,8 @@ export const Home = () => {
   const [page, setPage] = useState(1);
   const [pageQuantity, setPageQuantity] = useState(0);
   const location = useLocation();
+
+  console.log(heroes);
 
   const handlePagination = (event, value) => {
     setPage(value);
@@ -68,7 +71,11 @@ export const Home = () => {
                     justifyContent: "space-between",
                   }}
                 >
-                  <img src={hero.images} alt={hero.nikname} width={300} />
+                  <img
+                    src={hero.images || UnknownHero}
+                    alt={hero.nikname}
+                    width={300}
+                  />
                   <Box
                     sx={{
                       padding: "20px",

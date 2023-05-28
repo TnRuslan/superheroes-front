@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Form } from "../components/Form";
 import { Box, Button, Container, Typography } from "@mui/material";
 import styled from "styled-components";
+import UnknownHero from "../images/unknown.jpg";
 
 const BackLink = styled(Link)`
   width: 100px;
@@ -37,7 +38,11 @@ export const HeroDetails = () => {
       <BackLink to={location.state?.from ?? "/"}> Go back</BackLink>
       {hero && (
         <Box sx={{ display: "flex", gap: "30px", marginBottom: "30px" }}>
-          <img src={hero.images} alt={hero.nikname} width={300} />
+          <img
+            src={hero.images || UnknownHero}
+            alt={hero.nikname}
+            width={300}
+          />
           <Box sx={{ display: "flex", flexDirection: "column", gap: "30px" }}>
             <Typography variant="h5">Nikname: {hero.nikname}</Typography>
             <Typography variant="h5">Name: {hero.name}</Typography>
